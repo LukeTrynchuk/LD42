@@ -10,10 +10,7 @@ namespace RoboCorp.General
     public class DoNotDestroyOnLoad : MonoBehaviour
     {
 		#region Main Methods
-		private void Awake()
-		{
-            DontDestroyOnLoad(gameObject);
-		}
+		private void Awake() => DontDestroyOnLoad(gameObject);
 		#endregion
 	}
 }
