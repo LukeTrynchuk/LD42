@@ -12,6 +12,9 @@ namespace RoboCorp.General
     public class SwitchPlacementServiceIsPlacing : MonoBehaviour
     {
         #region Private Variables
+        [SerializeField]
+        private DynamicBoolEvent m_onSwitchValue;
+
         private ServiceReference<IPlacementService> m_placementService
                         = new ServiceReference<IPlacementService>();
         #endregion
@@ -21,8 +24,9 @@ namespace RoboCorp.General
         {
             if (!m_placementService.isRegistered()) return;
 
-            bool currentValue = m_placementService.Reference.IsPlacing;
-            m_placementService.Reference.SetPlacingActive(!currentValue);
+            bool currentValue = !m_placementService.Reference.IsPlacing;
+            m_placementService.Reference.SetPlacingActive(currentValue);
+            m_onSwitchValue?.Invoke(currentValue);
         }
         #endregion
     }
