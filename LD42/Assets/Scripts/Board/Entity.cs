@@ -24,11 +24,17 @@ namespace RoboCorp.Gameboard
 
         #region PrivateVariables
         [SerializeField]
-        private GameObject inputStream;
+        private GameObject m_inputHelper;
+
         [SerializeField]
-        private GameObject outStream;
+        private GameObject m_outputHelper;
+
         [SerializeField]
-        private GameObject placementHelper;
+        private GameObject m_placementHelper;
+
+        [SerializeField]
+        private InputOutputSetting m_inputOutputSettings;
+
         private bool IsPlacing = false;
         #endregion
         #region Main Methods
@@ -46,9 +52,9 @@ namespace RoboCorp.Gameboard
         public virtual void SetIsPlacing(bool placingValue)
         {
             IsPlacing = placingValue;
-            placementHelper.SetActive(IsPlacing);
-            inputStream.SetActive(IsPlacing);
-            outStream.SetActive(IsPlacing);
+            m_placementHelper.SetActive(IsPlacing);
+            m_inputHelper.SetActive(IsPlacing);
+            m_outputHelper.SetActive(IsPlacing);
         }
         #endregion
     }
