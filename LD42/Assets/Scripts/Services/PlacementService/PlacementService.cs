@@ -27,9 +27,22 @@ namespace RoboCorp.Services
         #region Main Methods
         void Awake() => RegisterService();
 
-        public void SetCurrentPlacingEntity(GameObject entity) => m_currentPlacingEntityObject = entity;
+        public void SetCurrentPlacingEntity(GameObject entity)
+        {
+            if(m_currentPlacingEntityObject != null)
+            {
+                Destroy(m_currentPlacingEntityObject);
+            }
 
-        public void SetPlacingActive(bool value) => m_isPlacing = value;
+            m_currentPlacingEntityObject = Instantiate(entity);
+            m_currentPlacingEntityObject.SetActive(IsPlacing);
+        }
+
+        public void SetPlacingActive(bool value)
+        {
+            m_isPlacing = value;
+            m_currentPlacingEntityObject?.SetActive(m_isPlacing);
+        }
 
         void Update()
         {
