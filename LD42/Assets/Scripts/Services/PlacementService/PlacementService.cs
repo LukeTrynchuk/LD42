@@ -65,7 +65,18 @@ namespace RoboCorp.Services
 
         private void AttemptPlace()
         {
-            
+            if (m_rayCamera == null) return;
+            if (m_currentPlacingEntityObject == null) return;
+
+            Debug.Log("I made it Mom");
+
+            RaycastHit hit;
+            Ray ray = m_rayCamera.ScreenPointToRay(Input.mousePosition);
+
+            if(Physics.Raycast(ray,out hit))
+            {
+                m_currentPlacingEntityObject.transform.position = hit.point;
+            }
         }
         #endregion
     }
