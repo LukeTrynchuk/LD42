@@ -32,7 +32,22 @@ namespace RoboCorp.Services
 
         #region Main Methods
         void Awake() => RegisterService();
-
+        void Start()
+        {
+            inputService.AddRegistrationHandle(OnRegisterInput);
+        }
+        void OnRegisterInput()
+        {
+            inputService.Reference.OnRotationButton -= OnUserRotated;
+            inputService.Reference.OnRotationButton += OnUserRotated;
+        }
+        void OnUserRotated(int amount)
+        {
+            if (!IsPlacing) return;
+            if (m_currentPlacingEntityObject == null) return;
+            amount = Mathf.Clamp(amount, -1, 1);
+            m_currentPlacingEntityObject.transform.RotateAround(Vector3.up, Mathf.Deg2Rad * (90f *(float)amount));
+        }
         public void SetCurrentPlacingEntity(GameObject entity)
         {
             if(m_currentPlacingEntityObject != null)
