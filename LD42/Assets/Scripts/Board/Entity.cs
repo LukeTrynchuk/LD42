@@ -24,6 +24,15 @@ namespace RoboCorp.Gameboard
 
         #region Main Methods
         public abstract void Tick();
+        public abstract void Animate();
+
+        public virtual void TickOutputs()
+        {
+            if (m_backOutput != null)    m_backInput.Tick();
+            if (m_forwardOutput != null) m_backInput.Tick();
+            if (m_leftOutput != null)    m_backInput.Tick();
+            if (m_rightOutput != null)   m_backInput.Tick();
+        }
         #endregion
     }
 }

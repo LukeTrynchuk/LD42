@@ -16,8 +16,8 @@ namespace RoboCorp.Services
 
         TickState State { get; }
 
-        void Register(Entity entity);
-        void Unregister(Entity entity);
+        void Register(InputEntity entity);
+        void Unregister(InputEntity entity);
 
         void DisableTick();
         void EnableTick();

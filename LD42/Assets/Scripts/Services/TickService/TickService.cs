@@ -13,11 +13,10 @@ namespace RoboCorp.Services
     /// a list of entities and calling their
     /// Tick method every X number of seconds.
     /// </summary>
-    public class TickService : RegisterManager<Entity> , ITickService
+    public class TickService : RegisterManager<InputEntity> , ITickService
     {
         #region Public Variables
         public event Action OnTick;
-
         public TickState State => m_state;
         #endregion
 
@@ -46,9 +45,9 @@ namespace RoboCorp.Services
         #endregion
 
         #region Utility Methods
-        private void TickEntityCollection()
+        private void TickInputCollection()
         {
-            foreach (Entity entity in m_valueList) entity.Tick();
+            foreach (InputEntity entity in m_valueList) entity.Tick();
         }
 
         private void Tick()
@@ -56,7 +55,7 @@ namespace RoboCorp.Services
             if (!CanTick()) return;
 
             m_currentTime = 0f;
-            TickEntityCollection();
+            TickInputCollection();
             OnTick?.Invoke();
         }
 
