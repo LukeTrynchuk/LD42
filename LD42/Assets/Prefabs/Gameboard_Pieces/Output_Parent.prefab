@@ -103,6 +103,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4286656513072358}
+  - component: {fileID: 114937295605656004}
   m_Layer: 0
   m_Name: Output_Parent
   m_TagString: Untagged
@@ -152,7 +153,6 @@ GameObject:
   - component: {fileID: 4027048230169948}
   - component: {fileID: 33219353102540388}
   - component: {fileID: 23412611563635732}
-  - component: {fileID: 65564183937436272}
   m_Layer: 0
   m_Name: Graphic
   m_TagString: Untagged
@@ -259,18 +259,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1803332773458338}
   m_Mesh: {fileID: 4300000, guid: 89a2dc4b0476c4396a31ef129bf3b023, type: 3}
---- !u!65 &65564183937436272
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1803332773458338}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!114 &114015489899722384
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -492,6 +480,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114937295605656004
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1647904417713030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92b994b822ced47d48133245a9f79817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_inputHelper: {fileID: 1352272344990846}
+  m_outputHelper: {fileID: 0}
+  m_placementHelper: {fileID: 1684076705025760}
+  m_inputOutputSettings: {fileID: 11400000, guid: 7e49834a5befb40fc9a0f3a287cab28c,
+    type: 2}
 --- !u!222 &222254761368585882
 CanvasRenderer:
   m_ObjectHideFlags: 1

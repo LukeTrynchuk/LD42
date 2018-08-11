@@ -21,15 +21,15 @@ namespace RoboCorp.Gameboard
         #endregion
 
         #region Protected Variables
-        [SerializeField]protected Entity m_backInput = null;
-        [SerializeField]protected Entity m_forwardInput = null;
-        [SerializeField]protected Entity m_leftInput = null;
-        [SerializeField]protected Entity m_rightInput = null;
+        protected Entity m_backInput = null;
+        protected Entity m_forwardInput = null;
+        protected Entity m_leftInput = null;
+        protected Entity m_rightInput = null;
 
-        [SerializeField]protected Entity m_backOutput = null;
-        [SerializeField]protected Entity m_forwardOutput = null;
-        [SerializeField]protected Entity m_leftOutput = null;
-        [SerializeField]protected Entity m_rightOutput = null;
+        protected Entity m_backOutput = null;
+        protected Entity m_forwardOutput = null;
+        protected Entity m_leftOutput = null;
+        protected Entity m_rightOutput = null;
         #endregion
 
         #region PrivateVariables
@@ -64,9 +64,9 @@ namespace RoboCorp.Gameboard
         public virtual void SetIsPlacing(bool placingValue)
         {
             IsPlacing = placingValue;
-            m_placementHelper.SetActive(IsPlacing);
-            m_inputHelper.SetActive(IsPlacing);
-            m_outputHelper.SetActive(IsPlacing);
+            m_placementHelper?.SetActive(IsPlacing);
+            m_inputHelper?.SetActive(IsPlacing);
+            m_outputHelper?.SetActive(IsPlacing);
         }
 
         public virtual void SetConnections()
