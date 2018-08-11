@@ -1,4 +1,4 @@
-﻿namespace LD.Core.Services
+﻿namespace RoboCorp.Core.Services
 {
 	public interface IService 
 	{

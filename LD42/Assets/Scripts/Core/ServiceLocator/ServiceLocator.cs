@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace LD.Core.Services
+namespace RoboCorp.Core.Services
 {
 	public sealed class ServiceLocator 
 	{
