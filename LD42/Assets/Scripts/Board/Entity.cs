@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace RoboCorp.Gameboard
 {
@@ -12,6 +10,20 @@ namespace RoboCorp.Gameboard
     /// </summary>
     public abstract class Entity : MonoBehaviour
     {
+        #region Protected Variables
+        protected Entity m_backInput = null;
+        protected Entity m_forwardInput = null;
+        protected Entity m_leftInput = null;
+        protected Entity m_rightInput = null;
+
+        protected Entity m_backOutput = null;
+        protected Entity m_forwardOutput = null;
+        protected Entity m_leftOutput = null;
+        protected Entity m_rightOutput = null;
+        #endregion
+
+        #region Main Methods
         public abstract void Tick();
+        #endregion
     }
 }
