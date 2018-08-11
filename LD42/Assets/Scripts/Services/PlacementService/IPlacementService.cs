@@ -18,5 +18,7 @@ namespace RoboCorp.Services
 
         void SetCurrentPlacingEntity(GameObject entity);
         void SetPlacingActive(bool value);
+        void RegisterCamera(Camera cam);
+        void UnregisterCamera(Camera cam);
     }
 }

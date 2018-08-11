@@ -22,6 +22,7 @@ namespace RoboCorp.Services
         #region Private Variables
         private bool m_isPlacing = false;
         private GameObject m_currentPlacingEntityObject;
+        private Camera m_rayCamera;
         #endregion
 
         #region Main Methods
@@ -48,6 +49,14 @@ namespace RoboCorp.Services
         {
             if (!IsPlacing) return;
             AttemptPlace();
+        }
+        public void RegisterCamera(Camera cam) => m_rayCamera = cam;
+        public void UnregisterCamera(Camera cam)
+        {
+            if(cam == m_rayCamera)
+            {
+                m_rayCamera = null;
+            }
         }
         #endregion
 
