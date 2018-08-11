@@ -23,6 +23,8 @@ namespace RoboCorp.Services
         private bool m_isPlacing = false;
         private GameObject m_currentPlacingEntityObject;
         private Camera m_rayCamera;
+        private ServiceReference<IInputService> inputService = new ServiceReference<IInputService>();
+        private ServiceReference<IGameboardService> gameboardService = new ServiceReference<IGameboardService>();
         #endregion
 
         #region Main Methods
@@ -71,7 +73,7 @@ namespace RoboCorp.Services
             if (m_currentPlacingEntityObject == null) return;
 
             MoveCurrentObject();
-           
+            PlaceCurrentObject();
         }
 
         private void MoveCurrentObject()
@@ -82,6 +84,17 @@ namespace RoboCorp.Services
             if (Physics.Raycast(ray, out hit))
             {
                 m_currentPlacingEntityObject.transform.position = hit.point;
+            }
+        }
+
+        private void PlaceCurrentObject()
+        {
+            if (inputService.Reference.IsConfirmButtonDown())
+            {
+                GameObject placedObject = Instantiate(m_currentPlacingEntityObject);
+                placedObject.transform.position = m_currentPlacingEntityObject.transform.position;
+                placedObject.transform.rotation = m_currentPlacingEntityObject.transform.rotation;
+                gameboardService.Reference.RegisterEntity(placedObject.GetComponent<Entity>());
             }
         }
         #endregion
