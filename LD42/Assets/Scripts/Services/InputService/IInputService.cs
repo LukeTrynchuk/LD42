@@ -11,7 +11,9 @@ namespace RoboCorp.Services
     public interface IInputService : IService
     {
         event System.Action OnConfirmButton;
+        event System.Action<int> OnRotationButton;
 
         bool IsConfirmButtonDown();
+        int RotationButtonDown();
     }
 }
