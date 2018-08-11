@@ -15,6 +15,7 @@ namespace RoboCorp.Services
     {
         #region Public Variables
         public bool IsPlacing => m_isPlacing;
+        public float GridSize => gridSize;
 
         public event Action<Entity> OnEntityPlaced;
         #endregion
@@ -99,13 +100,22 @@ namespace RoboCorp.Services
         {
             if (inputService.Reference.IsConfirmButtonDown())
             {
+                if (!ValidePosition(m_currentPlacingEntityObject.transform.position)) return;
                 GameObject placedObject = Instantiate(m_currentPlacingEntityObject);
                 placedObject.transform.position = m_currentPlacingEntityObject.transform.position;
                 placedObject.transform.rotation = m_currentPlacingEntityObject.transform.rotation;
-                gameboardService.Reference.RegisterEntity(placedObject.GetComponent<Entity>());
-                placedObject.GetComponent<Entity>().SetIsPlacing(false);
+
+                Entity entity = placedObject.GetComponent<Entity>();
+                gameboardService.Reference.RegisterEntity(entity);
+                entity.SetIsPlacing(false);
+                entity.SetConnections();
             }
         }
+        private bool ValidePosition(Vector3 position)
+        {
+            return gameboardService.Reference.IsValidePosition(position, gridSize);
+        }
+
         #endregion
     }
 }

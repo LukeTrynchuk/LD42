@@ -15,6 +15,7 @@ namespace RoboCorp.Services
         event System.Action<Entity> OnEntityPlaced;
 
         bool IsPlacing { get; }
+        float GridSize { get; }
 
         void SetCurrentPlacingEntity(GameObject entity);
         void SetPlacingActive(bool value);

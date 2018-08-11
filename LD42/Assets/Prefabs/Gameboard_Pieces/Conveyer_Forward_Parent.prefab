@@ -431,9 +431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed157f508db0fff468020887ef81beac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputStream: {fileID: 1556924968867338}
-  outStream: {fileID: 1052434922435270}
-  placementHelper: {fileID: 1346959012437462}
+  m_inputHelper: {fileID: 1556924968867338}
+  m_outputHelper: {fileID: 1052434922435270}
+  m_placementHelper: {fileID: 1346959012437462}
+  m_inputOutputSettings: {fileID: 11400000, guid: f3d548425458643bdb3d18ec5173759a,
+    type: 2}
 --- !u!114 &114629557255384856
 MonoBehaviour:
   m_ObjectHideFlags: 1

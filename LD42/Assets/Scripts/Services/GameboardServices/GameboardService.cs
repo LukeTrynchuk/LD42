@@ -6,12 +6,16 @@ using RoboCorp.Gameboard;
 
 namespace RoboCorp.Services
 {
-    public class GameboardService : MonoBehaviour, IGameboardService {
-
+    public class GameboardService : MonoBehaviour, IGameboardService 
+    {
+        #region Private Variables
         private List<Entity> entityList = new List<Entity>();
-        #region MainMethods
+        private ServiceReference<IPlacementService> m_placementService = new ServiceReference<IPlacementService>();
+        #endregion
 
+        #region MainMethods
         void Awake() => RegisterService();
+
         public void RegisterEntity(Entity entity)
         {
             entityList.Add(entity);
@@ -20,6 +24,25 @@ namespace RoboCorp.Services
         public void RegisterService()
         {
             ServiceLocator.Register<IGameboardService>(this);
+        }
+
+        public bool IsValidePosition(Vector3 position, float radius)
+        {
+            foreach(Entity e in entityList)
+            {
+                if (Vector3.Distance(position, e.gameObject.transform.position) < radius *0.9f) return false;
+            }
+            return true;
+        }
+
+        public Entity GetEntityAt(Vector3 position)
+        {
+            foreach(Entity e in entityList)
+            {
+                if (Vector3.Distance(position, e.gameObject.transform.position) < m_placementService.Reference.GridSize * 0.9f) return e;
+            }
+
+            return null;
         }
         #endregion
 
