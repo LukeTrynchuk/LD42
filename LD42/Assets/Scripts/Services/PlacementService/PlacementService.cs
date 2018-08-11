@@ -20,6 +20,8 @@ namespace RoboCorp.Services
         #endregion
 
         #region Private Variables
+        [SerializeField]
+        private float gridSize;
         private bool m_isPlacing = false;
         private GameObject m_currentPlacingEntityObject;
         private Camera m_rayCamera;
@@ -83,8 +85,14 @@ namespace RoboCorp.Services
 
             if (Physics.Raycast(ray, out hit))
             {
-                m_currentPlacingEntityObject.transform.position = hit.point;
+                m_currentPlacingEntityObject.transform.position = SnapToGrid(hit.point);
             }
+        }
+        private Vector3 SnapToGrid(Vector3 initialPosition)
+        {
+            initialPosition.x -= initialPosition.x % gridSize;
+            initialPosition.z -= initialPosition.z % gridSize;
+            return initialPosition;
         }
 
         private void PlaceCurrentObject()
