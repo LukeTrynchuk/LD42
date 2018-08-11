@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using RoboCorp.Core.Services;
 
@@ -7,21 +8,29 @@ namespace RoboCorp.Services
 {
     public class DateService : MonoBehaviour, IDateService
     {
+        public string date => DateToString();
+
+        private string Date;
+        private DateTime dateTime = new DateTime(2050,1,1);
+
+        private void Awake()
+        {
+            RegisterService();
+        }
+
+        public void IncrementDate()
+        {
+            dateTime.AddDays(1);
+        }
+
         public void RegisterService()
         {
             ServiceLocator.Register<IDateService>(this);
         }
 
-        // Use this for initialization
-        void Start()
+        private string DateToString()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            return dateTime.ToString("M",null) + " " + dateTime.Year.ToString();
         }
     }
 }

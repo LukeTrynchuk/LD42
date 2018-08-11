@@ -7,7 +7,8 @@ namespace RoboCorp.Services
 {
     public interface IDateService : IService
     {
-        
+        string date { get; }
+        void IncrementDate();
     }
 }
 

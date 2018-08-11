@@ -10,6 +10,11 @@ namespace RoboCorp.Services
         public float Money => money;
         private float money;
 
+        private void Awake()
+        {
+            RegisterService();
+        }
+
         public void AddMoney(float value)
         {
             money += value;
