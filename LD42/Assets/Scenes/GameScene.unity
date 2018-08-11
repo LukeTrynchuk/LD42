@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44439143, g: 0.49386257, b: 0.57319945, a: 1}
+  m_IndirectSpecularColor: {r: 0.4443919, g: 0.49386293, b: 0.57320064, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -789,6 +789,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2042320662}
   - component: {fileID: 2042320661}
+  - component: {fileID: 2042320663}
   m_Layer: 0
   m_Name: PlacementServiceUtility
   m_TagString: Untagged
@@ -836,6 +837,19 @@ Transform:
   m_Father: {fileID: 1702159044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2042320663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2042320660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbce39a3e3f681b4283d2291d293c997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  placementObject: {fileID: 1807326440130078, guid: 93119ea8a5423417eaec490ca5bea5a9,
+    type: 2}
 --- !u!1 &2058985852
 GameObject:
   m_ObjectHideFlags: 0
