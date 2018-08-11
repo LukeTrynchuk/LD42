@@ -95,6 +95,7 @@ namespace RoboCorp.Services
                 placedObject.transform.position = m_currentPlacingEntityObject.transform.position;
                 placedObject.transform.rotation = m_currentPlacingEntityObject.transform.rotation;
                 gameboardService.Reference.RegisterEntity(placedObject.GetComponent<Entity>());
+                placedObject.GetComponent<Entity>().SetIsPlacing(false);
             }
         }
         #endregion
