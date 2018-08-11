@@ -21,6 +21,17 @@ namespace RoboCorp.Services
         {
             ServiceLocator.Register<IGameboardService>(this);
         }
+
+        public bool IsValidePosition(Vector3 position, float radius)
+        {
+            foreach(Entity e in entityList)
+            {
+                if (Vector3.Distance(position, e.gameObject.transform.position) < radius *0.9f) return false;
+            }
+            return true;
+        }
+
+
         #endregion
 
     }

@@ -99,6 +99,7 @@ namespace RoboCorp.Services
         {
             if (inputService.Reference.IsConfirmButtonDown())
             {
+                if (!ValidePosition(m_currentPlacingEntityObject.transform.position)) return;
                 GameObject placedObject = Instantiate(m_currentPlacingEntityObject);
                 placedObject.transform.position = m_currentPlacingEntityObject.transform.position;
                 placedObject.transform.rotation = m_currentPlacingEntityObject.transform.rotation;
@@ -106,6 +107,11 @@ namespace RoboCorp.Services
                 placedObject.GetComponent<Entity>().SetIsPlacing(false);
             }
         }
+        private bool ValidePosition(Vector3 position)
+        {
+            return gameboardService.Reference.IsValidePosition(position, gridSize);
+        }
+
         #endregion
     }
 }
