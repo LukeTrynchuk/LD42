@@ -37,12 +37,14 @@ namespace RoboCorp.Services
 
             m_currentPlacingEntityObject = Instantiate(entity);
             m_currentPlacingEntityObject.SetActive(IsPlacing);
+            m_currentPlacingEntityObject.GetComponent<Entity>().SetIsPlacing(IsPlacing);
         }
 
         public void SetPlacingActive(bool value)
         {
             m_isPlacing = value;
             m_currentPlacingEntityObject?.SetActive(m_isPlacing);
+            m_currentPlacingEntityObject.GetComponent<Entity>().SetIsPlacing(true);
         }
 
         void Update()
@@ -68,12 +70,16 @@ namespace RoboCorp.Services
             if (m_rayCamera == null) return;
             if (m_currentPlacingEntityObject == null) return;
 
-            Debug.Log("I made it Mom");
+            MoveCurrentObject();
+           
+        }
 
+        private void MoveCurrentObject()
+        {
             RaycastHit hit;
             Ray ray = m_rayCamera.ScreenPointToRay(Input.mousePosition);
 
-            if(Physics.Raycast(ray,out hit))
+            if (Physics.Raycast(ray, out hit))
             {
                 m_currentPlacingEntityObject.transform.position = hit.point;
             }

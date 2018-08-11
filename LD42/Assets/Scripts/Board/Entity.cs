@@ -22,6 +22,15 @@ namespace RoboCorp.Gameboard
         protected Entity m_rightOutput = null;
         #endregion
 
+        #region PrivateVariables
+        [SerializeField]
+        private GameObject inputStream;
+        [SerializeField]
+        private GameObject outStream;
+        [SerializeField]
+        private GameObject placementHelper;
+        private bool IsPlacing = false;
+        #endregion
         #region Main Methods
         public abstract void Tick();
         public abstract void Animate();
@@ -32,6 +41,14 @@ namespace RoboCorp.Gameboard
             if (m_forwardOutput != null) m_backInput.Tick();
             if (m_leftOutput != null)    m_backInput.Tick();
             if (m_rightOutput != null)   m_backInput.Tick();
+        }
+
+        public virtual void SetIsPlacing(bool placingValue)
+        {
+            IsPlacing = placingValue;
+            placementHelper.SetActive(IsPlacing);
+            inputStream.SetActive(IsPlacing);
+            outStream.SetActive(IsPlacing);
         }
         #endregion
     }

@@ -149,6 +149,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4539153644963696}
+  - component: {fileID: 114493026253967962}
   m_Layer: 0
   m_Name: Conveyer_Forward_Parent
   m_TagString: Untagged
@@ -290,7 +291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1346959012437462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224815255476548734}
@@ -419,6 +420,20 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114493026253967962
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1807326440130078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed157f508db0fff468020887ef81beac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputStream: {fileID: 1556924968867338}
+  outStream: {fileID: 1052434922435270}
+  placementHelper: {fileID: 1346959012437462}
 --- !u!114 &114629557255384856
 MonoBehaviour:
   m_ObjectHideFlags: 1
