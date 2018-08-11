@@ -152,25 +152,25 @@ namespace RoboCorp.Gameboard
         #region Utility Methods
         private void AttemptConnectionForward()
         {
-            AttemptConnection(ForwardPosition, m_inputOutputSettings.InputForward, m_inputOutputSettings.OutputForward, m_forwardInput, m_forwardOutput);
+            AttemptConnection(ForwardPosition, m_inputOutputSettings.InputForward, m_inputOutputSettings.OutputForward, ref m_forwardInput, ref m_forwardOutput);
         }
 
         private void AttemptConnectionBack()
         {
-            AttemptConnection(BackPosition, m_inputOutputSettings.InputBack, m_inputOutputSettings.OutputBack, m_backInput, m_backOutput);
+            AttemptConnection(BackPosition, m_inputOutputSettings.InputBack, m_inputOutputSettings.OutputBack, ref m_backInput, ref m_backOutput);
         }
 
         private void AttemptConnectionRight()
         {
-            AttemptConnection(RightPosition, m_inputOutputSettings.InputRight, m_inputOutputSettings.OutputRight, m_rightInput, m_rightOutput);
+            AttemptConnection(RightPosition, m_inputOutputSettings.InputRight, m_inputOutputSettings.OutputRight, ref m_rightInput, ref m_rightOutput);
         }
 
         private void AttemptConnectionLeft()
         {
-            AttemptConnection(LeftPosition, m_inputOutputSettings.InputRight, m_inputOutputSettings.OutputRight, m_leftInput, m_leftOutput);
+            AttemptConnection(LeftPosition, m_inputOutputSettings.InputRight, m_inputOutputSettings.OutputRight, ref m_leftInput, ref m_leftOutput);
         }
 
-        private void AttemptConnection(Vector3 position, bool input, bool output, Entity directionInputEntity, Entity directionOutputEntity)
+        private void AttemptConnection(Vector3 position, bool input, bool output,ref  Entity directionInputEntity, ref Entity directionOutputEntity)
         {
             if (!input && !output) return;
 
