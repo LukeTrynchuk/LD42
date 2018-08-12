@@ -308,7 +308,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1960982205871526, guid: 7fc3966efd0ef4474b718c5451591459, type: 2}
       propertyPath: m_Name
-      value: BuildingItem
+      value: CornerConveyer_BuildItem
       objectReference: {fileID: 0}
     - target: {fileID: 114403807400922784, guid: 7fc3966efd0ef4474b718c5451591459,
         type: 2}
@@ -324,6 +324,27 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224412769297151250, guid: 7fc3966efd0ef4474b718c5451591459,
     type: 2}
   m_PrefabInternal: {fileID: 121685336}
+--- !u!1 &121685338 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1960982205871526, guid: 7fc3966efd0ef4474b718c5451591459,
+    type: 2}
+  m_PrefabInternal: {fileID: 121685336}
+--- !u!114 &121685339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 121685338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffee8757966045a9a132196cf0d9f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_representingBuildItem: {fileID: 1743107900326518, guid: 6d154371255f84c94a7538765eb9c4db,
+    type: 2}
+  m_unselectedColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  m_selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  m_defaultBuildItem: 0
 --- !u!1001 &266514128
 Prefab:
   m_ObjectHideFlags: 0
@@ -1565,6 +1586,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1960982205871526, guid: 7fc3966efd0ef4474b718c5451591459, type: 2}
+      propertyPath: m_Name
+      value: StraightConveyer_BuildItem
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7fc3966efd0ef4474b718c5451591459, type: 2}
   m_IsPrefabParent: 0
@@ -1573,6 +1598,27 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224412769297151250, guid: 7fc3966efd0ef4474b718c5451591459,
     type: 2}
   m_PrefabInternal: {fileID: 1874016826}
+--- !u!1 &1874016828 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1960982205871526, guid: 7fc3966efd0ef4474b718c5451591459,
+    type: 2}
+  m_PrefabInternal: {fileID: 1874016826}
+--- !u!114 &1874016829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1874016828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ffee8757966045a9a132196cf0d9f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_representingBuildItem: {fileID: 1807326440130078, guid: 93119ea8a5423417eaec490ca5bea5a9,
+    type: 2}
+  m_unselectedColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
+  m_selectedColor: {r: 1, g: 1, b: 1, a: 1}
+  m_defaultBuildItem: 1
 --- !u!1 &2014062892
 GameObject:
   m_ObjectHideFlags: 0
