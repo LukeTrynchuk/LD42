@@ -70,6 +70,7 @@ namespace RoboCorp.Resources
             for (int i = m_newResourceList.Count - 1; i >= 0; i--)
                 m_newResourceList.RemoveAt(i);
         }
+
         #endregion
     }
 }

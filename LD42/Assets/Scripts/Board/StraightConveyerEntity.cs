@@ -24,7 +24,12 @@ namespace RoboCorp.Gameboard
 
 		public override void TransportResource()
 		{
-            if (m_forwardOutput == null) return;
+            if (m_forwardOutput == null)
+            {
+                if (resourceContainer.OldResourceList.Count <= 0) return;
+                DestroyResource();
+                return;
+            }
             resourceContainer.TransferResource(m_forwardOutput.ResourcesContainer);
             m_forwardOutput.TransportResource();
 		}

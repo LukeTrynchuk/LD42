@@ -245,6 +245,14 @@ namespace RoboCorp.Gameboard
                 }
             }
         }
+        protected void DestroyResource()
+        {
+            for (int i = resourceContainer.OldResourceList.Count - 1; i >= 0; i--)
+            {
+                Destroy(resourceContainer.OldResourceList[i].gameObject);
+            }
+            resourceContainer.OldResourceList.Clear();
+        }
         #endregion
     }
 
