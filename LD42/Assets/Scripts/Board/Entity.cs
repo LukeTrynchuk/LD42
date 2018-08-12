@@ -13,23 +13,21 @@ namespace RoboCorp.Gameboard
     /// </summary>
     public abstract class Entity : MonoBehaviour
     {
-        #region Public Variables
-        protected Vector3 LeftPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.left);
-        protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
-        protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
-        protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
-        #endregion
-
         #region Protected Variables
-        [SerializeField]protected Entity m_backInput = null;
-        [SerializeField]protected Entity m_forwardInput = null;
-        [SerializeField]protected Entity m_leftInput = null;
-        [SerializeField]protected Entity m_rightInput = null;
+        protected Entity m_backInput = null;
+        protected Entity m_forwardInput = null;
+        protected Entity m_leftInput = null;
+        protected Entity m_rightInput = null;
 
-        [SerializeField]protected Entity m_backOutput = null;
-        [SerializeField]protected Entity m_forwardOutput = null;
-        [SerializeField]protected Entity m_leftOutput = null;
-        [SerializeField]protected Entity m_rightOutput = null;
+        protected Entity m_backOutput = null;
+        protected Entity m_forwardOutput = null;
+        protected Entity m_leftOutput = null;
+        protected Entity m_rightOutput = null;
+		
+        protected Vector3 LeftPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.left);
+		protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
+		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
+		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
         #endregion
 
         #region PrivateVariables
@@ -64,9 +62,9 @@ namespace RoboCorp.Gameboard
         public virtual void SetIsPlacing(bool placingValue)
         {
             IsPlacing = placingValue;
-            m_placementHelper.SetActive(IsPlacing);
-            m_inputHelper.SetActive(IsPlacing);
-            m_outputHelper.SetActive(IsPlacing);
+            m_placementHelper?.SetActive(IsPlacing);
+            m_inputHelper?.SetActive(IsPlacing);
+            m_outputHelper?.SetActive(IsPlacing);
         }
 
         public virtual void SetConnections()
@@ -146,6 +144,13 @@ namespace RoboCorp.Gameboard
                     m_backOutput = entity;
                 }
             }
+        }
+
+        public virtual void Setup()
+        {
+            m_gameboardService.Reference?.RegisterEntity(this);
+            SetIsPlacing(false);
+            SetConnections();
         }
         #endregion
 

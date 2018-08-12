@@ -121,9 +121,7 @@ namespace RoboCorp.Services
                 placedObject.transform.rotation = m_currentPlacingEntityObject.transform.rotation;
 
                 Entity entity = placedObject.GetComponent<Entity>();
-                gameboardService.Reference.RegisterEntity(entity);
-                entity.SetIsPlacing(false);
-                entity.SetConnections();
+                entity.Setup();
             }
         }
         private bool ValidePosition(Vector3 position)
