@@ -63,7 +63,6 @@ namespace RoboCorp.Construction
 		
         public void OnPointerDown(PointerEventData eventData)
 		{
-            Debug.Log("Selected");
             m_state = BuildItemState.SELECTED;
             SetDisplayColor();
 
