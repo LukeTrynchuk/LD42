@@ -217,7 +217,7 @@ namespace RoboCorp.Gameboard
 
         private void AttemptConnectionLeft()
         {
-            AttemptConnection(LeftPosition, m_inputOutputSettings.InputRight, m_inputOutputSettings.OutputRight, ref m_leftInput, ref m_leftOutput);
+            AttemptConnection(LeftPosition, m_inputOutputSettings.InputLeft, m_inputOutputSettings.OutputRight, ref m_leftInput, ref m_leftOutput);
         }
 
         private void AttemptConnection(Vector3 position, bool input, bool output,ref  Entity directionInputEntity, ref Entity directionOutputEntity)
