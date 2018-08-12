@@ -8,7 +8,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64338082c23a44f77b7eda53401c434f, type: 3}
-  m_Name: CornerConveyer_ResourceSetting
+  m_Script: {fileID: 11500000, guid: e732a5e17e564470e9babb3fa0be1125, type: 3}
+  m_Name: CornerLeftConveyer_InputOutputSettings
   m_EditorClassIdentifier: 
-  NumberOfResourcesAtOnce: 1
+  InputBack: 0
+  InputForward: 0
+  InputLeft: 1
+  InputRight: 0
+  OutputBack: 0
+  OutputForward: 1
+  OutputLeft: 0
+  OutputRight: 0

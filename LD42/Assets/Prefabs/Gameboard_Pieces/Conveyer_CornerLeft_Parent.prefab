@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 4378840404507716}
   - component: {fileID: 114344134610838724}
   m_Layer: 0
-  m_Name: Conveyer_Corner_Parent
+  m_Name: Conveyer_CornerLeft_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
