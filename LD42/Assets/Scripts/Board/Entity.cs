@@ -14,6 +14,12 @@ namespace RoboCorp.Gameboard
     /// </summary>
     public abstract class Entity : MonoBehaviour
     {
+        #region Public Variable
+        public ResourceContainer ResourcesContainer => resourceContainer;
+
+        public Transform TransportTransform => m_transportTransform;
+        #endregion
+
         #region Protected Variables
         [SerializeField]
         protected Entity m_backInput = null;
@@ -37,11 +43,8 @@ namespace RoboCorp.Gameboard
 		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
 		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
         protected ResourceContainer resourceContainer;
+        #endregion
 
-        #endregion
-        #region Public Variable
-        public ResourceContainer ResourcesContainer => resourceContainer; 
-        #endregion
         #region PrivateVariables
         [Header("Visual Aids")]
         [SerializeField]

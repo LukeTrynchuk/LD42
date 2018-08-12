@@ -1,6 +1,7 @@
 ﻿using RoboCorp.Core.Services;
 using RoboCorp.Services;
 using UnityEngine;
+using RoboCorp.Resources;
 
 namespace RoboCorp.Gameboard
 {
@@ -52,8 +53,10 @@ namespace RoboCorp.Gameboard
         {
             if (m_currentResource == null) return;
             if (m_forwardOutput == null) return;
+
             GameObject newResource = Instantiate(m_currentResource);
             newResource.transform.position = m_transportTransform.position;
+            newResource.GetComponent<Resource>().SetTargetPosition(m_forwardOutput.TransportTransform.position);
         }
         #endregion
     }
