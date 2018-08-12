@@ -430,7 +430,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d178373f97499e48941753767ccc594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
 --- !u!1001 &400732660
 Prefab:
   m_ObjectHideFlags: 0
@@ -552,14 +551,10 @@ GameObject:
     type: 2}
   m_PrefabInternal: {fileID: 400732660}
 --- !u!114 &400732663
-=======
---- !u!114 &266514132
->>>>>>> develop
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 400732662}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -571,16 +566,6 @@ MonoBehaviour:
   m_unselectedColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
   m_selectedColor: {r: 1, g: 1, b: 1, a: 1}
   m_defaultBuildItem: 0
-=======
-  m_GameObject: {fileID: 266514130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d3c17f0110435c46903470a6a7c437c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buildBanner: {fileID: 2076027482}
-  cam: {fileID: 0}
->>>>>>> develop
 --- !u!1 &478770133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,7 +1428,6 @@ Transform:
   m_Children:
   - {fileID: 2042320662}
   - {fileID: 1649544791}
-  - {fileID: 1857380247}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1642,7 +1626,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-<<<<<<< HEAD
 --- !u!1001 &1874016826
 Prefab:
   m_ObjectHideFlags: 0
@@ -1758,43 +1741,10 @@ GameObject:
     type: 2}
   m_PrefabInternal: {fileID: 1874016826}
 --- !u!114 &1874016829
-=======
---- !u!1 &1857380246
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1857380247}
-  - component: {fileID: 1857380248}
-  m_Layer: 0
-  m_Name: SoundUtility
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1857380247
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1857380246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1702159044}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1857380248
->>>>>>> develop
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1874016828}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -1806,14 +1756,6 @@ MonoBehaviour:
   m_unselectedColor: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_selectedColor: {r: 1, g: 1, b: 1, a: 1}
   m_defaultBuildItem: 1
-=======
-  m_GameObject: {fileID: 1857380246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aabd1e6856ced0645a5983450aa476c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> develop
 --- !u!1 &2014062892
 GameObject:
   m_ObjectHideFlags: 0
