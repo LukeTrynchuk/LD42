@@ -15,20 +15,27 @@ namespace RoboCorp.Gameboard
     public abstract class Entity : MonoBehaviour
     {
         #region Protected Variables
+        [SerializeField]
         protected Entity m_backInput = null;
+        [SerializeField]
         protected Entity m_forwardInput = null;
+        [SerializeField]
         protected Entity m_leftInput = null;
+        [SerializeField]
         protected Entity m_rightInput = null;
-
+        [SerializeField]
         protected Entity m_backOutput = null;
+        [SerializeField]
         protected Entity m_forwardOutput = null;
+        [SerializeField]
         protected Entity m_leftOutput = null;
+        [SerializeField]
         protected Entity m_rightOutput = null;
 		
         protected Vector3 LeftPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.left);
 		protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
-		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
-		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
+		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
+		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
         protected ResourceContainer resourceContainer;
 
         #endregion

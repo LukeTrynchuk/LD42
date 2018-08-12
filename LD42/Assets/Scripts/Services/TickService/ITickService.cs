@@ -15,7 +15,8 @@ namespace RoboCorp.Services
         event System.Action OnTick;
 
         TickState State { get; }
-
+        float tickLength { get; }
+        float currentTime { get; }
         void Register(InputEntity entity);
         void Unregister(InputEntity entity);
 

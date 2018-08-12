@@ -37,6 +37,7 @@ namespace RoboCorp.Resources
         }
         public void TransferTo(Resource resource)
         {
+            resource.TranslatePoint = position;
             resourceList.Add(resource);
         }
         private void RegisterTick()
