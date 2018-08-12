@@ -1194,6 +1194,7 @@ GameObject:
   - component: {fileID: 2076027483}
   - component: {fileID: 2076027485}
   - component: {fileID: 2076027484}
+  - component: {fileID: 2076027486}
   m_Layer: 5
   m_Name: Building_Banner
   m_TagString: Untagged
@@ -1252,3 +1253,14 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076027482}
+--- !u!114 &2076027486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2076027482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f7c6750b737774f99cecb3b2745302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

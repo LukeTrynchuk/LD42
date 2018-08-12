@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RoboCorp.Gameboard;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using RoboCorp.Core.Services;
 
 namespace RoboCorp.Services
@@ -89,6 +90,10 @@ namespace RoboCorp.Services
         {
             if (m_rayCamera == null) return;
             if (m_currentPlacingEntityObject == null) return;
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                return;
+            }
 
             MoveCurrentObject();
             PlaceCurrentObject();
