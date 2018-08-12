@@ -198,6 +198,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d178373f97499e48941753767ccc594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &266514132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 266514130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d3c17f0110435c46903470a6a7c437c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buildBanner: {fileID: 2076027482}
+  cam: {fileID: 0}
 --- !u!1 &478770133
 GameObject:
   m_ObjectHideFlags: 0
