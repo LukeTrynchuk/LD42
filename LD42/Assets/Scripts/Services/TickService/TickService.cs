@@ -58,8 +58,8 @@ namespace RoboCorp.Services
             if (!CanTick()) return;
 
             m_currentTime = 0f;
-            TickInputCollection();
             OnTick?.Invoke();
+            TickInputCollection();
         }
 
         private bool CanTick()

@@ -28,7 +28,7 @@ namespace RoboCorp.Gameboard
         {
             if (m_forwardOutput == null) return;
             resourceContainer.TransferResource(m_forwardOutput.ResourcesContainer);
-
+            m_forwardOutput.TransportResource();
         }
         public void SetCurrentResource(GameObject resource)
         {
