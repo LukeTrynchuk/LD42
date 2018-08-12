@@ -2,6 +2,11 @@
 using UnityEngine;
 using RoboCorp.Core.Services;
 using RoboCorp.Services;
+using RoboCorp.Resources;
+
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 namespace RoboCorp.Gameboard
 {
@@ -13,24 +18,39 @@ namespace RoboCorp.Gameboard
     /// </summary>
     public abstract class Entity : MonoBehaviour
     {
-        #region Protected Variables
-        protected Entity m_backInput = null;
-        protected Entity m_forwardInput = null;
-        protected Entity m_leftInput = null;
-        protected Entity m_rightInput = null;
+        #region Public Variable
+        public ResourceContainer ResourcesContainer => resourceContainer;
 
+        public Transform TransportTransform => m_transportTransform;
+        #endregion
+
+        #region Protected Variables
+        [SerializeField]
+        protected Entity m_backInput = null;
+        [SerializeField]
+        protected Entity m_forwardInput = null;
+        [SerializeField]
+        protected Entity m_leftInput = null;
+        [SerializeField]
+        protected Entity m_rightInput = null;
+        [SerializeField]
         protected Entity m_backOutput = null;
+        [SerializeField]
         protected Entity m_forwardOutput = null;
+        [SerializeField]
         protected Entity m_leftOutput = null;
+        [SerializeField]
         protected Entity m_rightOutput = null;
 		
         protected Vector3 LeftPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.left);
 		protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
-		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
-		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
+		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
+		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
+        protected ResourceContainer resourceContainer;
         #endregion
 
         #region PrivateVariables
+        [Header("Visual Aids")]
         [SerializeField]
         private GameObject m_inputHelper;
 
@@ -40,23 +60,39 @@ namespace RoboCorp.Gameboard
         [SerializeField]
         private GameObject m_placementHelper;
 
+        [Space]
+        [Header("Settings")]
         [SerializeField]
         private InputOutputSetting m_inputOutputSettings;
+
+		[SerializeField]
+		private EntityResourceSetting m_resourceSetting;
+
+        [Space]
+        [Header("Miscellaneous")]
+        [SerializeField]
+        protected Transform m_transportTransform;
 
         private bool IsPlacing = false;
 
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
+        private ServiceReference<ITickService> m_tickService = new ServiceReference<ITickService>();
         #endregion
+
         #region Main Methods
+        public virtual void Awake()
+        {
+            resourceContainer = new ResourceContainer(m_transportTransform.position);
+        }
         public abstract void Tick();
         public abstract void Animate();
 
         public virtual void TickOutputs()
         {
-            if (m_backOutput != null) m_backInput.Tick();
-            if (m_forwardOutput != null) m_backInput.Tick();
-            if (m_leftOutput != null) m_backInput.Tick();
-            if (m_rightOutput != null) m_backInput.Tick();
+            if (m_backOutput != null) m_backOutput.Tick();
+            if (m_forwardOutput != null) m_forwardOutput.Tick();
+            if (m_leftOutput != null) m_leftOutput.Tick();
+            if (m_rightOutput != null) m_rightOutput.Tick();
         }
 
         public virtual void SetIsPlacing(bool placingValue)
@@ -152,10 +188,19 @@ namespace RoboCorp.Gameboard
             SetIsPlacing(false);
             SetConnections();
         }
-        #endregion
 
-        #region Utility Methods
-        private void AttemptConnectionForward()
+        public virtual void TransportResource() {}
+
+		private void OnDrawGizmos()
+		{
+            Handles.Label(transform.position + Vector3.up, resourceContainer.NewResourceList.Count.ToString());
+            Handles.Label(transform.position + Vector3.up * 2, resourceContainer.OldResourceList.Count.ToString());
+		}
+		#endregion
+
+		#region Utility Methods
+
+		private void AttemptConnectionForward()
         {
             AttemptConnection(ForwardPosition, m_inputOutputSettings.InputForward, m_inputOutputSettings.OutputForward, ref m_forwardInput, ref m_forwardOutput);
         }
@@ -199,6 +244,14 @@ namespace RoboCorp.Gameboard
                     connectionEntity.MakeConnection(this, ConnectionType.OUTPUT);
                 }
             }
+        }
+        protected void DestroyResource()
+        {
+            for (int i = resourceContainer.OldResourceList.Count - 1; i >= 0; i--)
+            {
+                Destroy(resourceContainer.OldResourceList[i].gameObject);
+            }
+            resourceContainer.OldResourceList.Clear();
         }
         #endregion
     }
