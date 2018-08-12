@@ -53,7 +53,7 @@ namespace RoboCorp.Gameboard
         [Space]
         [Header("Miscellaneous")]
         [SerializeField]
-        private Transform m_transportTransform;
+        protected Transform m_transportTransform;
 
         private bool IsPlacing = false;
 
@@ -64,19 +64,6 @@ namespace RoboCorp.Gameboard
         #region Main Methods
         public abstract void Tick();
         public abstract void Animate();
-
-        public virtual void OnEnable()
-        {
-            m_tickService.AddRegistrationHandle(RegisterEntityTick);
-        }
-
-        public virtual void OnDisable()
-        {
-            if(m_tickService.isRegistered())
-            {
-                m_tickService.Reference.OnTick -= Tick;
-            }
-        }
 
         public virtual void TickOutputs()
         {
@@ -188,11 +175,6 @@ namespace RoboCorp.Gameboard
 
         #region Utility Methods
 
-        private void RegisterEntityTick()
-        {
-            m_tickService.Reference.OnTick -= Tick;
-            m_tickService.Reference.OnTick += Tick;
-        }
         private void AttemptConnectionForward()
         {
             AttemptConnection(ForwardPosition, m_inputOutputSettings.InputForward, m_inputOutputSettings.OutputForward, ref m_forwardInput, ref m_forwardOutput);

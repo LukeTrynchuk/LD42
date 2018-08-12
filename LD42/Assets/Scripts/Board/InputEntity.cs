@@ -13,16 +13,21 @@ namespace RoboCorp.Gameboard
         #region Private Variables
         private ServiceReference<ITickService> m_tickService
                 = new ServiceReference<ITickService>();
+        private GameObject m_currentResource;
         #endregion
 
         #region Main Methods
         public override void Tick()
         {
-            Debug.Log("Tick");
+            GenerateResource();
             TickOutputs();
             Animate();
         }
 
+        public void SetCurrentResource(GameObject resource)
+        {
+            m_currentResource = resource;
+        }
         public override void Animate() { }
 
         public void Awake()
@@ -35,6 +40,12 @@ namespace RoboCorp.Gameboard
         void OnTickServiceRegistered()
         {
             m_tickService.Reference?.Register(this);    
+        }
+        private void GenerateResource()
+        {
+            if (m_currentResource == null) return;
+            GameObject newResource = Instantiate(m_currentResource);
+            newResource.transform.position = m_transportTransform.position;
         }
         #endregion
     }
