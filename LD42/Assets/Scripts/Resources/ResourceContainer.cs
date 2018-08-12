@@ -10,48 +10,66 @@ namespace RoboCorp.Resources
     /// A resource is a class that contains all
     /// the resources on one entity. 
     /// </summary>
-    public class ResourceContainer 
+    public class ResourceContainer
     {
-        private List<Resource> resourceList = new List<Resource>();
-        public List<Resource> ResourceList => resourceList;
-        private List<Resource> oldResourceList = new List<Resource>();
-        private Vector3 position;
-        private ServiceReference<ITickService> tickService = new ServiceReference<ITickService>();
+        #region Public Variables
+        public List<Resource> NewResourceList => m_newResourceList;
+        public List<Resource> OldResourceList => m_oldResourceList;
+        #endregion
+
+        #region Private Variables
+        private List<Resource> m_newResourceList = new List<Resource>();
+        private List<Resource> m_oldResourceList = new List<Resource>();
+        private Vector3 m_transportPoint;
+        private ServiceReference<ITickService> m_tickService = new ServiceReference<ITickService>();
+        #endregion
+
+        #region Main Methods
         public ResourceContainer(Vector3 startPosition)
         {
-            position = startPosition;
-            tickService.AddRegistrationHandle(RegisterTick);
+            m_transportPoint = startPosition;
+            m_tickService.AddRegistrationHandle(RegisterTick);
         }
+
         ~ResourceContainer()
         {
-            if(tickService.isRegistered())
+            if (m_tickService.isRegistered())
             {
-                tickService.Reference.OnTick -= OnTick;
+                m_tickService.Reference.OnTick -= OnTick;
             }
         }
+
         public void TransferResource(ResourceContainer container)
         {
-            if(!(oldResourceList.Count>0)) return;
-            container.TransferTo(oldResourceList[0]);
-            oldResourceList.RemoveAt(0);
+            if (!(m_oldResourceList.Count > 0)) return;
+            container.TransferTo(m_oldResourceList[0]);
+            m_oldResourceList.RemoveAt(0);
         }
+
         public void TransferTo(Resource resource)
         {
-            resource.TranslatePoint = position;
-            resourceList.Add(resource);
+            resource.TranslatePoint = m_transportPoint;
+            m_newResourceList.Add(resource);
         }
+        #endregion
+
+        #region Utility Methods
         private void RegisterTick()
         {
-            tickService.Reference.OnTick -= OnTick;
-            tickService.Reference.OnTick += OnTick;
+            m_tickService.Reference.OnTick -= OnTick;
+            m_tickService.Reference.OnTick += OnTick;
         }
+
         private void OnTick()
         {
-            foreach(Resource R in resourceList)
+            foreach (Resource resource in m_newResourceList)
             {
-                oldResourceList.Add(R);
+                m_oldResourceList.Add(resource);
             }
-            resourceList.Clear();
+
+            for (int i = m_newResourceList.Count - 1; i >= 0; i--)
+                m_newResourceList.RemoveAt(i);
         }
+        #endregion
     }
 }

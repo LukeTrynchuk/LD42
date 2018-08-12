@@ -57,6 +57,7 @@ namespace RoboCorp.Gameboard
             GameObject newResource = Instantiate(m_currentResource);
             newResource.transform.position = m_transportTransform.position;
             newResource.GetComponent<Resource>().SetTargetPosition(m_forwardOutput.TransportTransform.position);
+            resourceContainer.TransferTo(newResource.GetComponent<Resource>());
         }
         #endregion
     }

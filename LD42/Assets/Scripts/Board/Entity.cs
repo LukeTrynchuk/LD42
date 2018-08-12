@@ -4,6 +4,10 @@ using RoboCorp.Core.Services;
 using RoboCorp.Services;
 using RoboCorp.Resources;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 namespace RoboCorp.Gameboard
 {
     /// <summary>
@@ -74,6 +78,7 @@ namespace RoboCorp.Gameboard
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
         private ServiceReference<ITickService> m_tickService = new ServiceReference<ITickService>();
         #endregion
+
         #region Main Methods
         public virtual void Awake()
         {
@@ -184,15 +189,18 @@ namespace RoboCorp.Gameboard
             SetConnections();
         }
 
-        public virtual void TransportResource()
-        {
-            
-        }
-        #endregion
+        public virtual void TransportResource() {}
 
-        #region Utility Methods
+		private void OnDrawGizmos()
+		{
+            Handles.Label(transform.position + Vector3.up, resourceContainer.NewResourceList.Count.ToString());
+            Handles.Label(transform.position + Vector3.up * 2, resourceContainer.OldResourceList.Count.ToString());
+		}
+		#endregion
 
-        private void AttemptConnectionForward()
+		#region Utility Methods
+
+		private void AttemptConnectionForward()
         {
             AttemptConnection(ForwardPosition, m_inputOutputSettings.InputForward, m_inputOutputSettings.OutputForward, ref m_forwardInput, ref m_forwardOutput);
         }
