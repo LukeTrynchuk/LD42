@@ -22,6 +22,7 @@ namespace RoboCorp.Resources
         private void OnEnable()
         {
             tickService.AddRegistrationHandle(RegisterTick);
+            currentTime = 0;
         }
         private void OnDisable()
         {
@@ -33,7 +34,7 @@ namespace RoboCorp.Resources
 
         private void OnTick()
         {
-
+            currentTime = 0;
         }
 
         private void Update()
