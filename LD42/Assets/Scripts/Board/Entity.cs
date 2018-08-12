@@ -2,6 +2,7 @@
 using UnityEngine;
 using RoboCorp.Core.Services;
 using RoboCorp.Services;
+using RoboCorp.Resources;
 
 namespace RoboCorp.Gameboard
 {
@@ -31,6 +32,7 @@ namespace RoboCorp.Gameboard
         #endregion
 
         #region PrivateVariables
+        [Header("Visual Aids")]
         [SerializeField]
         private GameObject m_inputHelper;
 
@@ -40,9 +42,16 @@ namespace RoboCorp.Gameboard
         [SerializeField]
         private GameObject m_placementHelper;
 
+        [Space]
+        [Header("Settings")]
         [SerializeField]
         private InputOutputSetting m_inputOutputSettings;
 
+		[SerializeField]
+		private EntityResourceSetting m_resourceSetting;
+
+        [Space]
+        [Header("Miscellaneous")]
         [SerializeField]
         private Transform m_transportTransform;
 
@@ -154,6 +163,11 @@ namespace RoboCorp.Gameboard
             m_gameboardService.Reference?.RegisterEntity(this);
             SetIsPlacing(false);
             SetConnections();
+        }
+
+        public virtual void TransportResource(Resource resource)
+        {
+            
         }
         #endregion
 

@@ -526,6 +526,7 @@ MonoBehaviour:
   m_inputOutputSettings: {fileID: 11400000, guid: 7e49834a5befb40fc9a0f3a287cab28c,
     type: 2}
   m_transportTransform: {fileID: 4317798697841946}
+  m_resourceSetting: {fileID: 11400000, guid: bd052e82c1a134656a91fc6ebe7a1050, type: 2}
 --- !u!222 &222254761368585882
 CanvasRenderer:
   m_ObjectHideFlags: 1

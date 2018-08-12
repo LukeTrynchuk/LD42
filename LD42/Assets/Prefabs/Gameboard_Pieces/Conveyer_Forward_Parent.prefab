@@ -466,6 +466,7 @@ MonoBehaviour:
   m_inputOutputSettings: {fileID: 11400000, guid: f3d548425458643bdb3d18ec5173759a,
     type: 2}
   m_transportTransform: {fileID: 4382877238286362}
+  m_resourceSetting: {fileID: 11400000, guid: d6cf5bdd5c5744bba891f2a7c8de1c17, type: 2}
 --- !u!114 &114629557255384856
 MonoBehaviour:
   m_ObjectHideFlags: 1
