@@ -13,13 +13,6 @@ namespace RoboCorp.Gameboard
     /// </summary>
     public abstract class Entity : MonoBehaviour
     {
-        #region Public Variables
-        protected Vector3 LeftPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.left);
-        protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
-        protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
-        protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
-        #endregion
-
         #region Protected Variables
         protected Entity m_backInput = null;
         protected Entity m_forwardInput = null;
@@ -30,6 +23,11 @@ namespace RoboCorp.Gameboard
         protected Entity m_forwardOutput = null;
         protected Entity m_leftOutput = null;
         protected Entity m_rightOutput = null;
+		
+        protected Vector3 LeftPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.left);
+		protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
+		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
+		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
         #endregion
 
         #region PrivateVariables
@@ -146,6 +144,13 @@ namespace RoboCorp.Gameboard
                     m_backOutput = entity;
                 }
             }
+        }
+
+        public virtual void Setup()
+        {
+            m_gameboardService.Reference?.RegisterEntity(this);
+            SetIsPlacing(false);
+            SetConnections();
         }
         #endregion
 
