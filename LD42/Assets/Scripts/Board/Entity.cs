@@ -72,7 +72,7 @@ namespace RoboCorp.Gameboard
         private ServiceReference<ITickService> m_tickService = new ServiceReference<ITickService>();
         #endregion
         #region Main Methods
-        private void Awake()
+        public virtual void Awake()
         {
             resourceContainer = new ResourceContainer(m_transportTransform.position);
         }
@@ -81,10 +81,10 @@ namespace RoboCorp.Gameboard
 
         public virtual void TickOutputs()
         {
-            if (m_backOutput != null) m_backInput.Tick();
-            if (m_forwardOutput != null) m_backInput.Tick();
-            if (m_leftOutput != null) m_backInput.Tick();
-            if (m_rightOutput != null) m_backInput.Tick();
+            if (m_backOutput != null) m_backOutput.Tick();
+            if (m_forwardOutput != null) m_forwardOutput.Tick();
+            if (m_leftOutput != null) m_leftOutput.Tick();
+            if (m_rightOutput != null) m_rightOutput.Tick();
         }
 
         public virtual void SetIsPlacing(bool placingValue)

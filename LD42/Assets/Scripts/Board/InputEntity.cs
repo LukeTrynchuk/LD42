@@ -36,8 +36,9 @@ namespace RoboCorp.Gameboard
         }
         public override void Animate() { }
 
-        public void Awake()
+        public override void Awake()
         {
+            base.Awake();
             m_tickService.AddRegistrationHandle(OnTickServiceRegistered);
         }
         #endregion
