@@ -18,7 +18,4 @@ namespace RoboCorp.General
 
     [System.Serializable]
     public class DynamicVector3Event : UnityEvent<Vector3> {}
-
-    [System.Serializable]
-    public class DynamicGameObjectGameObjectEvent : UnityEvent<GameObject,GameObject> { }
 }
