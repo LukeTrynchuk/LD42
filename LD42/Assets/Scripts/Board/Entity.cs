@@ -58,6 +58,7 @@ namespace RoboCorp.Gameboard
         private bool IsPlacing = false;
 
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
+        private ResourceContainer container = new ResourceContainer();;
         #endregion
         #region Main Methods
         public abstract void Tick();
