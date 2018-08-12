@@ -43,6 +43,9 @@ namespace RoboCorp.Gameboard
         [SerializeField]
         private InputOutputSetting m_inputOutputSettings;
 
+        [SerializeField]
+        private Transform m_transportTransform;
+
         private bool IsPlacing = false;
 
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
