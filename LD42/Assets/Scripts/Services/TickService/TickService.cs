@@ -18,6 +18,8 @@ namespace RoboCorp.Services
         #region Public Variables
         public event Action OnTick;
         public TickState State => m_state;
+        public float tickLength =>m_tickLength;
+        public float currentTime => m_currentTime;
         #endregion
 
         #region Private Variables
@@ -27,6 +29,7 @@ namespace RoboCorp.Services
         private float m_currentTime = 0f;
 
         TickState m_state = TickState.TICK_DISABLED;
+
         #endregion
 
         #region Main Methods

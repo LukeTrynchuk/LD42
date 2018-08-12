@@ -1,5 +1,6 @@
 ﻿using RoboCorp.Core.Services;
 using RoboCorp.Services;
+using UnityEngine;
 
 namespace RoboCorp.Gameboard
 {
@@ -17,6 +18,7 @@ namespace RoboCorp.Gameboard
         #region Main Methods
         public override void Tick()
         {
+            Debug.Log("Tick");
             TickOutputs();
             Animate();
         }

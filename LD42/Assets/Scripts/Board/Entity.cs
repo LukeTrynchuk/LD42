@@ -58,11 +58,25 @@ namespace RoboCorp.Gameboard
         private bool IsPlacing = false;
 
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
-        private ResourceContainer container = new ResourceContainer();;
+        private ServiceReference<ITickService> m_tickService = new ServiceReference<ITickService>();
+        private ResourceContainer container = new ResourceContainer();
         #endregion
         #region Main Methods
         public abstract void Tick();
         public abstract void Animate();
+
+        public virtual void OnEnable()
+        {
+            m_tickService.AddRegistrationHandle(RegisterEntityTick);
+        }
+
+        public virtual void OnDisable()
+        {
+            if(m_tickService.isRegistered())
+            {
+                m_tickService.Reference.OnTick -= Tick;
+            }
+        }
 
         public virtual void TickOutputs()
         {
@@ -173,6 +187,12 @@ namespace RoboCorp.Gameboard
         #endregion
 
         #region Utility Methods
+
+        private void RegisterEntityTick()
+        {
+            m_tickService.Reference.OnTick -= Tick;
+            m_tickService.Reference.OnTick += Tick;
+        }
         private void AttemptConnectionForward()
         {
             AttemptConnection(ForwardPosition, m_inputOutputSettings.InputForward, m_inputOutputSettings.OutputForward, ref m_forwardInput, ref m_forwardOutput);
