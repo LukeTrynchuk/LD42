@@ -29,8 +29,12 @@ namespace RoboCorp.Gameboard
 		protected Vector3 RightPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.right);
 		protected Vector3 BackPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.forward);
 		protected Vector3 ForwardPosition => gameObject.transform.position + gameObject.transform.TransformDirection(Vector3.back);
-        #endregion
+        protected ResourceContainer resourceContainer;
 
+        #endregion
+        #region Public Variable
+        public ResourceContainer ResourcesContainer => resourceContainer; 
+        #endregion
         #region PrivateVariables
         [Header("Visual Aids")]
         [SerializeField]
@@ -59,9 +63,12 @@ namespace RoboCorp.Gameboard
 
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
         private ServiceReference<ITickService> m_tickService = new ServiceReference<ITickService>();
-        private ResourceContainer container = new ResourceContainer();
         #endregion
         #region Main Methods
+        private void Awake()
+        {
+            resourceContainer = new ResourceContainer(m_transportTransform.position);
+        }
         public abstract void Tick();
         public abstract void Animate();
 
@@ -167,7 +174,7 @@ namespace RoboCorp.Gameboard
             SetConnections();
         }
 
-        public virtual void TransportResource(Resource resource)
+        public virtual void TransportResource()
         {
             
         }

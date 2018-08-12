@@ -19,11 +19,17 @@ namespace RoboCorp.Gameboard
         #region Main Methods
         public override void Tick()
         {
+            TransportResource();
             GenerateResource();
             TickOutputs();
             Animate();
         }
+        public override void TransportResource()
+        {
+            if (m_forwardOutput == null) return;
+            resourceContainer.TransferResource(m_forwardOutput.ResourcesContainer);
 
+        }
         public void SetCurrentResource(GameObject resource)
         {
             m_currentResource = resource;
@@ -44,6 +50,7 @@ namespace RoboCorp.Gameboard
         private void GenerateResource()
         {
             if (m_currentResource == null) return;
+            if (m_forwardOutput == null) return;
             GameObject newResource = Instantiate(m_currentResource);
             newResource.transform.position = m_transportTransform.position;
         }

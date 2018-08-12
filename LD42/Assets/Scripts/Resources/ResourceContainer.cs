@@ -12,7 +12,12 @@ namespace RoboCorp.Resources
     {
         private List<Resource> resourceList = new List<Resource>();
         public List<Resource> ResourceList => resourceList;
+        private Vector3 position;
 
+       public ResourceContainer(Vector3 startPosition)
+        {
+            position = startPosition;
+        }
         public void TransferResource(ResourceContainer container)
         {
             if(!(ResourceList.Count>0)) return;
