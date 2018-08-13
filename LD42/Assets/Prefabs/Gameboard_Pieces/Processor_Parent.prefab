@@ -943,6 +943,10 @@ MonoBehaviour:
     type: 2}
   m_resourceSetting: {fileID: 11400000, guid: 1e7d515453e1442b5adaa367c0e62beb, type: 2}
   m_transportTransform: {fileID: 4522038689627954}
+  m_refinedMetalPrefab: {fileID: 1504548289988358, guid: e57cb8af7630a49a5af49e2b0783ef10,
+    type: 2}
+  m_refinedPlasticPrefab: {fileID: 0}
+  m_refinedUraniumPrefab: {fileID: 0}
 --- !u!114 &114776325687812290
 MonoBehaviour:
   m_ObjectHideFlags: 1
