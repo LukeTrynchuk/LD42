@@ -40,6 +40,7 @@ namespace RoboCorp.Services
         }
 
         public int RotationButtonDown() => m_rotationAmount;
+        public Vector3 GetPointerScreenPosition() => Input.mousePosition;
         #endregion
 
         #region Utility Methods

@@ -1,4 +1,5 @@
 ﻿using RoboCorp.Core.Services;
+using UnityEngine;
 
 namespace RoboCorp.Services
 {
@@ -13,6 +14,7 @@ namespace RoboCorp.Services
         event System.Action OnConfirmButton;
         event System.Action<int> OnRotationButton;
 
+        Vector3 GetPointerScreenPosition();
         bool IsConfirmButtonDown();
         int RotationButtonDown();
     }
