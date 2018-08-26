@@ -23,9 +23,13 @@ namespace RoboCorp.Services
         [SerializeField]
         private float m_gridSize;
 
+        [SerializeField]
+        private float m_rotationTimeThreshhold;
+
         private bool m_isPlacing = false;
         private GameObject m_currentPlacingEntityObject;
 		private IPlace m_placer = new RaycastPlacementStrategy();
+        private float m_timeSinceRotation = 0f;
 
         private ServiceReference<IInputService> m_inputService = new ServiceReference<IInputService>();
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
@@ -67,6 +71,8 @@ namespace RoboCorp.Services
 
         void Update()
         {
+            m_timeSinceRotation += Time.deltaTime;
+
             if (!IsPlacing) return;
             AttemptPlace();
         }
@@ -107,6 +113,9 @@ namespace RoboCorp.Services
 
         private void RotatePlacingObjectByAmount(int rotationAmount)
         {
+            if (m_timeSinceRotation < m_rotationTimeThreshhold) return;
+
+            m_timeSinceRotation = 0f;
             rotationAmount = Mathf.Clamp(rotationAmount, -1, 1);
             float rotateRadians = Mathf.Deg2Rad * (90f * (float)rotationAmount);
             m_currentPlacingEntityObject.transform.RotateAround(Vector3.up, rotateRadians);
