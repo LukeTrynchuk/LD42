@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using RoboCorp.Core.Services;
 
@@ -18,29 +16,27 @@ namespace RoboCorp.Services
         #endregion
 
         #region Private Variables
+		[SerializeField]
+        private float m_scrollSensitivity;
+  
         private bool m_confirmDown = false;
         private int m_rotationAmount = 0;
-        [SerializeField]
-        private float scrollSensitivity;
+        private const string SCROLL_WHEEL_AXIS = "Mouse ScrollWheel";
         #endregion
 
         #region Main Methods
-        public bool IsConfirmButtonDown() => m_confirmDown;
-
-        public void RegisterService() => ServiceLocator.Register<IInputService>(this);
-
-        void Awake() => RegisterService();
+        public bool IsConfirmButtonDown()           => m_confirmDown;
+		void Awake()                                => RegisterService();
+        public void RegisterService()               => ServiceLocator.Register<IInputService>(this);
+		public int RotationButtonDown()             => m_rotationAmount;
+		public Vector3 GetPointerScreenPosition()   => Input.mousePosition;
 
         void Update()
         {
             ResetButtonValues();
-
             CheckForConfirmButton();
             CheckForRotationButton();
         }
-
-        public int RotationButtonDown() => m_rotationAmount;
-        public Vector3 GetPointerScreenPosition() => Input.mousePosition;
         #endregion
 
         #region Utility Methods
@@ -52,20 +48,26 @@ namespace RoboCorp.Services
                 OnConfirmButton?.Invoke();
             }
         }
+
         private void CheckForRotationButton()
         {
-            if(Mathf.Abs(Input.GetAxis("Mouse ScrollWheel")) > scrollSensitivity)
+            if(UserScrolled())
             {
-                m_rotationAmount = (int)(Input.GetAxis("Mouse ScrollWheel") / scrollSensitivity);
+                m_rotationAmount = (int)(Input.GetAxis(SCROLL_WHEEL_AXIS) / m_scrollSensitivity);
                 OnRotationButton?.Invoke(m_rotationAmount);
             }
         }
+
+        private bool UserScrolled()
+        {
+            return Mathf.Abs(Input.GetAxis(SCROLL_WHEEL_AXIS)) > m_scrollSensitivity;
+        }
+
         private void ResetButtonValues()
         {
             m_confirmDown = false;
             m_rotationAmount = 0;
         }
-
         #endregion
     }
 }
