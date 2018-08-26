@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using RoboCorp.Gameboard;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -24,9 +22,11 @@ namespace RoboCorp.Services
         #region Private Variables
         [SerializeField]
         private float m_gridSize;
+
         private bool m_isPlacing = false;
         private GameObject m_currentPlacingEntityObject;
-        private Camera m_rayCamera;
+		private IPlace m_placer = new RaycastPlacementStrategy();
+
         private ServiceReference<IInputService> m_inputService = new ServiceReference<IInputService>();
         private ServiceReference<IGameboardService> m_gameboardService = new ServiceReference<IGameboardService>();
         #endregion
@@ -70,15 +70,6 @@ namespace RoboCorp.Services
             if (!IsPlacing) return;
             AttemptPlace();
         }
-       
-        public void RegisterCamera(Camera cam) => m_rayCamera = cam;
-
-        public void UnregisterCamera(Camera cam)
-        {
-            if (cam != m_rayCamera) return;
-            m_rayCamera = null;
-        }
-
         #endregion
 
         #region Utility Methods
@@ -86,50 +77,22 @@ namespace RoboCorp.Services
 
         private void AttemptPlace()
         {
-            if (m_rayCamera == null) return;
             if (m_currentPlacingEntityObject == null) return;
             if (EventSystem.current.IsPointerOverGameObject()) return;
 
-            MoveCurrentObject();
+            m_placer.Move(ref m_currentPlacingEntityObject);
             PlaceCurrentObject();
-        }
-
-        private void MoveCurrentObject()
-        {
-            RaycastHit hit;
-            Ray ray = m_rayCamera.ScreenPointToRay(m_inputService.Reference.GetPointerScreenPosition());
-
-            if (Physics.Raycast(ray, out hit))
-            {
-                m_currentPlacingEntityObject.transform.position = SnapToGrid(hit.point);
-            }
-        }
-
-        private Vector3 SnapToGrid(Vector3 initialPosition)
-        {
-            initialPosition.x -= initialPosition.x % m_gridSize;
-            initialPosition.z -= initialPosition.z % m_gridSize;
-            return initialPosition;
         }
 
         private void PlaceCurrentObject()
         {
             if (!m_inputService.Reference.IsConfirmButtonDown()) return;
-            if (!ValidePosition(m_currentPlacingEntityObject.transform.position)) return;
+            if (!ValidatePosition(m_currentPlacingEntityObject.transform.position)) return;
 
-            Entity entity = InstantiatePlaceObject().GetComponent<Entity>();
-            entity.Setup();
+            m_placer.Place(m_currentPlacingEntityObject);
         }
 
-        private GameObject InstantiatePlaceObject()
-        {
-            GameObject placedObject = Instantiate(m_currentPlacingEntityObject);
-            placedObject.transform.position = m_currentPlacingEntityObject.transform.position;
-            placedObject.transform.rotation = m_currentPlacingEntityObject.transform.rotation;
-            return placedObject;
-        }
-
-        private bool ValidePosition(Vector3 position)
+        private bool ValidatePosition(Vector3 position)
         {
             return m_gameboardService.Reference.IsValidePosition(position, m_gridSize);
         }

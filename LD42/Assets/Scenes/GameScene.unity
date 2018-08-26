@@ -428,6 +428,10 @@ Prefab:
       propertyPath: maxHeight
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 120296, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 2}
+      propertyPath: m_TagString
+      value: MainGameCamera
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 2}
   m_IsPrefabParent: 0
@@ -439,17 +443,11 @@ Transform:
 GameObject:
   m_PrefabParentObject: {fileID: 120296, guid: 407bd5cbe8c43334bb1b25c0f3826974, type: 2}
   m_PrefabInternal: {fileID: 266514128}
---- !u!114 &266514131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 266514130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d178373f97499e48941753767ccc594, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+--- !u!20 &266514131 stripped
+Camera:
+  m_PrefabParentObject: {fileID: 2056488, guid: 407bd5cbe8c43334bb1b25c0f3826974,
+    type: 2}
+  m_PrefabInternal: {fileID: 266514128}
 --- !u!114 &266514132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,7 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildBanner: {fileID: 78259995}
-  cam: {fileID: 0}
+  cam: {fileID: 266514131}
 --- !u!1 &277409871
 GameObject:
   m_ObjectHideFlags: 0
