@@ -16,6 +16,7 @@ namespace RoboCorp.Construction
         [SerializeField]
         private GameObject m_representingBuildItem;
 
+        //TODO : Make a 2 color struct. I foresee this being a common thing
         [SerializeField]
         private Color m_unselectedColor;
 
@@ -67,6 +68,7 @@ namespace RoboCorp.Construction
             SetDisplayColor();
 
             m_placementService.Reference?.SetCurrentPlacingEntity(m_representingBuildItem);
+            m_buildItemService.Reference?.SetCurrentSelectedItem(this);
 		}
 		
 		public void OnPointerUp(PointerEventData eventData) {}
