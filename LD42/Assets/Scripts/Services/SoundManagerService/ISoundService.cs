@@ -5,7 +5,7 @@ using RoboCorp.Core.Services;
 
 namespace RoboCorp.Services
 {
-    public interface ISoundManagerService : IService {
+    public interface ISoundService : IService {
 
         void Play(string id);
     }

@@ -6,7 +6,7 @@ using RoboCorp.Services;
 
 public class PLayAudioOnStart : MonoBehaviour {
 
-    private ServiceReference<ISoundManagerService> soundManager = new ServiceReference<ISoundManagerService>();
+    private ServiceReference<ISoundService> soundManager = new ServiceReference<ISoundService>();
 	// Use this for initialization
 
 	void Start () {

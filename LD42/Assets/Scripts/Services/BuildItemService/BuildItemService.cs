@@ -6,17 +6,15 @@ using RoboCorp.Core.Services;
 namespace RoboCorp.Services
 {
     /// <summary>
-    /// Build item service.
+    /// The build item service is responsible
+    /// for keeping track of all the build items
+    /// available in the build item store.
     /// </summary>
     public class BuildItemService : RegisterManager<BuildItem>, IBuildItemService
     {
         #region Main Methods    
         void Awake() => RegisterService();
-
-        public void RegisterService()
-        {
-            ServiceLocator.Register<IBuildItemService>(this);
-        }
+        public void RegisterService() => ServiceLocator.Register<IBuildItemService>(this);
 
         public void SetCurrentSelectedItem(BuildItem buildItem)
         {
