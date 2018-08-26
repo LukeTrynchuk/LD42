@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 277409872}
   - component: {fileID: 277409873}
   m_Layer: 0
-  m_Name: SoundmanagerUtility
+  m_Name: SoundServiceUtility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -501,6 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c2bbae1847c5943833d8cfde0854e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_audioRequestID: Music1
 --- !u!1001 &400732660
 Prefab:
   m_ObjectHideFlags: 0
@@ -1531,7 +1532,7 @@ GameObject:
   - component: {fileID: 1649544791}
   - component: {fileID: 1649544792}
   m_Layer: 0
-  m_Name: TickUtility
+  m_Name: TickServiceUtility
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
