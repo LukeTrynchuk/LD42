@@ -2164,7 +2164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbce39a3e3f681b4283d2291d293c997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  placementObject: {fileID: 1807326440130078, guid: 93119ea8a5423417eaec490ca5bea5a9,
+  m_initialPlacementObject: {fileID: 1807326440130078, guid: 93119ea8a5423417eaec490ca5bea5a9,
     type: 2}
 --- !u!1 &2058985852
 GameObject:
