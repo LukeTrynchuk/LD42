@@ -100,7 +100,7 @@ namespace RoboCorp.Services
 
         private bool ValidatePosition(Vector3 position)
         {
-            return m_gameboardService.Reference.IsValidePosition(position, m_gridSize);
+            return m_gameboardService.Reference.IsValidePosition(position);
         }
 
         private void DestroyCurrentPlacingObject()

@@ -1,51 +1,48 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using RoboCorp.Core.Services;
 using RoboCorp.Gameboard;
+using RoboCorp.Services.General;
 
 namespace RoboCorp.Services
 {
-    public class GameboardService : MonoBehaviour, IGameboardService 
+    /// <summary>
+    /// The Game board service is responsible for
+    /// keeping track of the entities on the gameboard. 
+    /// Other classes will ask if a position on the
+    /// gameboard is a valid position for a new 
+    /// entity.
+    /// 
+    /// TODO : Come up with a better name.
+    /// </summary>
+    public class GameboardService : RegisterManager<Entity>, IGameboardService 
     {
         #region Private Variables
-        private List<Entity> entityList = new List<Entity>();
         private ServiceReference<IPlacementService> m_placementService = new ServiceReference<IPlacementService>();
+        private float GridSize => m_placementService.Reference.GridSize;
         #endregion
 
         #region MainMethods
         void Awake() => RegisterService();
+        public void RegisterEntity(Entity entity) => Register(entity);
+        public void UnregisterEntity(Entity entity) => Unregister(entity);
+        public void RegisterService() => ServiceLocator.Register<IGameboardService>(this);
 
-        public void RegisterEntity(Entity entity)
+        public bool IsValidePosition(Vector3 position)
         {
-            entityList.Add(entity);
-        }
-
-        public void RegisterService()
-        {
-            ServiceLocator.Register<IGameboardService>(this);
-        }
-
-        public bool IsValidePosition(Vector3 position, float radius)
-        {
-            foreach(Entity e in entityList)
-            {
-                if (Vector3.Distance(position, e.gameObject.transform.position) < radius *0.9f) return false;
-            }
-            return true;
+            Entity entity = GetEntityAt(position);
+            return (entity == null);
         }
 
         public Entity GetEntityAt(Vector3 position)
         {
-            foreach(Entity e in entityList)
+            foreach(Entity e in m_valueList)
             {
-                if (Vector3.Distance(position, e.gameObject.transform.position) < m_placementService.Reference.GridSize * 0.9f) return e;
+                if (Vector3.Distance(position, e.gameObject.transform.position) < GridSize * 0.9f) return e;
             }
 
             return null;
         }
         #endregion
-
     }
 }
 

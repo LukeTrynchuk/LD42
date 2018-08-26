@@ -40,7 +40,7 @@ namespace RoboCorp.Resources
         private void Update()
         {
             currentTime += Time.deltaTime;
-            this.transform.position = Vector3.Lerp(this.transform.position, TranslatePoint, Mathf.Clamp01(currentTime / (tickService.Reference.tickLength * 0.5f)));
+            this.transform.position = Vector3.Lerp(this.transform.position, TranslatePoint, Mathf.Clamp01(currentTime / (tickService.Reference.TickLength * 0.5f)));
         }
         #endregion
 

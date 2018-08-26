@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using RoboCorp.Services.General;
 using RoboCorp.Gameboard;
 using System;
@@ -18,8 +16,8 @@ namespace RoboCorp.Services
         #region Public Variables
         public event Action OnTick;
         public TickState State => m_state;
-        public float tickLength =>m_tickLength;
-        public float currentTime => m_currentTime;
+        public float TickLength =>m_tickLength;
+        public float CurrentTime => m_currentTime;
         #endregion
 
         #region Private Variables
@@ -27,9 +25,7 @@ namespace RoboCorp.Services
         private float m_tickLength;
 
         private float m_currentTime = 0f;
-
         TickState m_state = TickState.TICK_DISABLED;
-
         #endregion
 
         #region Main Methods
@@ -43,7 +39,6 @@ namespace RoboCorp.Services
 
         public void DisableTick() => m_state = TickState.TICK_DISABLED;
 		public void EnableTick()  => m_state = TickState.TICK_ENABLED;	
-
         public void RegisterService() => ServiceLocator.Register<ITickService>(this);
         #endregion
 
