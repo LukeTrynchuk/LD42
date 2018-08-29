@@ -15,6 +15,6 @@ namespace RoboCorp.Services
     public class EntityInstance : ScriptableObject 
     {
         public GameObject EntityPrefab;
-        public Texture EntityBuildIcon;
+        public Sprite EntityBuildIcon;
     }
 }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EntityPrefab: {fileID: 1807326440130078, guid: 93119ea8a5423417eaec490ca5bea5a9,
     type: 2}
-  EntityBuildIcon: {fileID: 2800000, guid: 4a10229b48f7a4365abafd3df1dbc89a, type: 3}
+  EntityBuildIcon: {fileID: 21300000, guid: 4a10229b48f7a4365abafd3df1dbc89a, type: 3}
