@@ -14,6 +14,7 @@ namespace RoboCorp.Services
     [CreateAssetMenu(fileName = "NewEntityInstance", menuName = "Entity/ Instance")]
     public class EntityInstance : ScriptableObject 
     {
-        
+        public GameObject EntityPrefab;
+        public Texture EntityBuildIcon;
     }
 }

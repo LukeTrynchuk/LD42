@@ -11,3 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3375be5fc0b8f4fcca5fca7495d2068f, type: 3}
   m_Name: Processor_Entity
   m_EditorClassIdentifier: 
+  EntityPrefab: {fileID: 1340406873206476, guid: 54613939c0c814ebcb009fb7991e2d50,
+    type: 2}
+  EntityBuildIcon: {fileID: 2800000, guid: 5b108d034c5a64d0abcdc331b43872cc, type: 3}

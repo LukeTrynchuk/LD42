@@ -11,3 +11,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3375be5fc0b8f4fcca5fca7495d2068f, type: 3}
   m_Name: CornerLeft_Entity
   m_EditorClassIdentifier: 
+  EntityPrefab: {fileID: 1743107900326518, guid: 6d154371255f84c94a7538765eb9c4db,
+    type: 2}
+  EntityBuildIcon: {fileID: 2800000, guid: 8796497ad8af84e8288e676e46010f21, type: 3}
